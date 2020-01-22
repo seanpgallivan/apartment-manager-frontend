@@ -1,0 +1,107 @@
+body {
+    background: thistle;
+    margin: 0px;
+    text-align: center;
+}
+p {
+    margin: 0px;
+}
+h3 {
+    margin: 3px;
+}
+.header {
+    background: steelblue;
+    height: 60px;
+    font-size: 40px;
+    line-height: 60px;
+}
+.sidebar, .content {
+    position: fixed;
+}
+.sidebar, .pane {
+    overflow-y: auto;
+}
+.sidebar {
+    background: lightgreen;
+    width: 250px;
+    height: calc(100vh - 60px);
+    left: 0px;
+    top: 60px;
+}
+.content {
+    width: calc(100vw - 270px);
+    height: calc(100vh - 80px);
+    left: 260px;
+    top: 70px;
+}
+#splash {
+    background: thistle;
+}
+#content {
+    display: none;
+}
+.content-tab, .content-tab-active {
+    background: fuchsia;
+    color: white;
+    margin-right: -5px;
+    width: 120px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    border: 5px solid fuchsia;
+    border-radius: 20px 20px 0px 0px;
+    float: left;
+}
+.content-tab:hover {
+    background: #ff99ff;
+    color: fuchsia;
+}
+.content-tab-active {
+    height: 35px;
+    border-bottom: 0px;
+    background: lavender;
+    color: fuchsia;
+}
+.content-spacer {
+    width: 1px;
+    height: 35px;
+}
+.content-pane {
+    background: lavender;
+    height: calc(100% - 65px);
+    border: 5px solid fuchsia;
+    border-radius: 0px 20px 20px 20px;
+    padding: 10px;
+}
+.pane {
+    height: 100%;
+    line-height: 40px;
+}
+.apt-card, #show-apts, #new-apt {
+    background: green;
+    color: white;
+    margin: 10px;
+    border: 1px solid green;
+    border-radius: 10px;
+}
+.apt-card {
+    width: 208px;
+    min-height: 150px;
+    padding: 10px;
+}
+#show-apts, #new-apt {
+    width: 230px;
+    font-size: 20px;
+    line-height: 30px;
+}
+#show-apts {
+    display: none;
+}
+.card-img {
+    max-width: 170px;
+    border: 1px solid black;
+}
+.apt-card:hover, #show-apts:hover, #new-apt:hover {
+    background: white;
+    color: green;
+}
