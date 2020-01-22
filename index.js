@@ -6,10 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('new-apt').onclick = e => clickNewApt(e)
     document.querySelectorAll('[id^="tab-"]').forEach(tab => tab.onclick = e => clickTab(e.target.id.slice(-1)))
     getApartments().then(apartments => apartments.forEach(makeAptCard))
-
-    document.querySelectorAll('[data-apt-id]').forEach(card => {
-        card.onclick = () => clickAptCard(card)
-    })
 });
 
 
@@ -61,5 +57,6 @@ const makeAptCard = apt => {
     div.appendChild(img)
     div.appendChild(h3)
     div.appendChild(p)
+    div.onclick = () => clickAptCard(div)
     document.getElementById('apt-card-wrapper').appendChild(div)
 }
