@@ -105,3 +105,16 @@ h3 {
     background: white;
     color: green;
 }
+
+.apt-img{
+    width: 100%;  
+    border: 1px solid black;
+}
+
+table{
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    border: 1px solid black
+}
+
