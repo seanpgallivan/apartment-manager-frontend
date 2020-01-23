@@ -15,34 +15,97 @@ h3 {
     font-size: 40px;
     line-height: 60px;
 }
-.sidebar, .content {
-    position: fixed;
-}
-.sidebar, .pane {
-    overflow-y: auto;
-}
+
+
+ /* Sidebar */
 .sidebar {
     background: lightgreen;
-    width: 250px;
+    width: 260px;
     height: calc(100vh - 60px);
     left: 0px;
     top: 60px;
+    position: fixed;
+    overflow-y: auto;
 }
-.content {
-    width: calc(100vw - 270px);
+.apt-card, /* #new-apt, */.room {
+    background: green;
+    color: white;
+    margin: 15px;
+    border: 1px solid green;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+.apt-card {
+    width: 208px;
+    min-height: 150px;
+    padding: 10px;
+}
+/* #new-apt {
+    width: 220px;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 5px;
+} */
+.card-img {
+    max-width: 170px;
+    border: 1px solid black;
+}
+.rooms-card {
+    background: limegreen;
+    color: white;
+    margin: 10px 25px 10px 50px;
+    border-radius: 10px;
+    padding: 10px 20px 10px 20px;
+    position: relative;
+    top: -25px;
+    z-index: 0;
+    display: none;
+}
+.floor {
+    margin: 10px 0px;
+    text-align: left;
+    font-weight: bold;
+}
+.room {
+    margin: 7px 0px 7px 30px;
+    padding: 5px;
+    text-align: center;
+}
+.apt-card:hover, /* #new-apt:hover, */ .room:hover {
+    background: white;
+    color: green;
+}
+.apt-card, /* #new-apt, */ .content-pane, .rooms-card, .room {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+.apt-card:active {
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
+    padding: 15px 5px 5px 15px;
+}
+/* #new-apt:active, */ .room:active {
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
+    padding: 10px 0px 0px 10px;
+}
+
+
+ /* Content Pane */
+#content, #splash {
+    width: calc(100vw - 280px);
     height: calc(100vh - 80px);
-    left: 260px;
+    left: 270px;
     top: 70px;
+    position: fixed;
+    display: none;
 }
 #splash {
     background: thistle;
-}
-#content {
-    display: none;
+    display: block;
 }
 .content-tab, .content-tab-active {
-    background: fuchsia;
-    color: white;
+    background: #ff99ff;
+    color: fuchsia;
     margin-right: -5px;
     width: 120px;
     height: 30px;
@@ -51,16 +114,19 @@ h3 {
     border: 5px solid fuchsia;
     border-radius: 20px 20px 0px 0px;
     float: left;
-}
-.content-tab:hover {
-    background: #ff99ff;
-    color: fuchsia;
+    cursor: pointer;
+    position: relative;
+    left: 30px;
 }
 .content-tab-active {
-    height: 35px;
-    border-bottom: 0px;
     background: lavender;
     color: fuchsia;
+    height: 35px;
+    border-bottom: 0px;
+}
+.content-tab:hover {
+    background: fuchsia;
+    color: white;
 }
 .content-spacer {
     width: 1px;
@@ -70,38 +136,81 @@ h3 {
     background: lavender;
     height: calc(100% - 65px);
     border: 5px solid fuchsia;
-    border-radius: 0px 20px 20px 20px;
+    border-radius: 20px;
     padding: 10px;
 }
 .pane {
     height: 100%;
     line-height: 40px;
+    overflow-y: auto;
 }
-.apt-card, #show-apts, #new-apt {
-    background: green;
-    color: white;
-    margin: 10px;
-    border: 1px solid green;
-    border-radius: 10px;
-}
-.apt-card {
-    width: 208px;
-    min-height: 150px;
-    padding: 10px;
-}
-#show-apts, #new-apt {
-    width: 230px;
-    font-size: 20px;
-    line-height: 30px;
-}
-#show-apts {
+
+
+
+ /* Modal */
+#modal-window {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 99;
     display: none;
 }
-.card-img {
-    max-width: 170px;
-    border: 1px solid black;
+.modal {
+    background: #fff2e0;
+    margin: 10% auto;
+    width: max-content;
+    border: 1px solid;
+    border-radius: 15px;
+    overflow: hidden;
+    font-size: 0px;
+    display: none;
 }
-.apt-card:hover, #show-apts:hover, #new-apt:hover {
+.modal-header {
+    background: #ffc053;
+    height: 60px;
+    padding: 0px 20px;
+    font-size: 40px;
+    line-height: 60px;
+}
+.modal-body {
+    margin: 10px auto;
+    width: max-content;
+    max-width: 500px;
+    padding: 0px 20px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+}
+.modal-footer {
+    line-height: 0px;
+    padding: 10px 20px;
+}
+form {
+    text-align: left;
+}
+input {
+    margin-bottom: 5px;
+    width: 300px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    display: block;
+}
+button {
+    background: #ffaa1d;
+    color: white;
+    margin: 5px;
+    width: 100px;
+    height: 35px;
+    border: #ffaa1d solid 1px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+button:hover {
     background: white;
-    color: green;
+    color: #ffaa1d;
+    border: #ffaa1d solid 1px;
 }
