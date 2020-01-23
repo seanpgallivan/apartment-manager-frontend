@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('[id^="tab-"]').forEach(tab => tab.onclick = e => clickTab(e.target.id.slice(-1)))
     // for testing modal:
     document.getElementById('splash').onclick = () => clickEditRoom()
-    getApartments().then(apartments => {
-        console.log(apartments)
-        apartments.forEach(makeAptCard)
-    })
+    getApartments().then(apartments => apartments.forEach(makeAptCard))
 });
 
 
@@ -26,28 +23,23 @@ const clickShowApts = id => {
     document.querySelectorAll('[id^="rooms-"]').forEach(card => card.style.display = "none")
     document.getElementById(`apt-${id}`).onclick = () => clickAptCard(id)
     document.querySelectorAll('[id^="apt-"]').forEach(card => card.style.display = "block")
-    // document.getElementById('new-apt').style.display = "block"
     document.getElementById('content').style.display = "none"
     document.getElementById('splash').style.display = "block"
 }
-// const clickNewApt = e => {
-//     console.log("new stuff")
-// }
 const clickAptCard = id => {
     document.querySelector('.sidebar').scrollTop = 0
-    // document.getElementById('new-apt').style.display = "none"
     document.querySelectorAll('[id^="apt-"]').forEach(card => card.style.display = "none")
     document.getElementById(`apt-${id}`).style.display = "block"
     document.getElementById(`apt-${id}`).onclick = () => clickShowApts(id)
     document.getElementById(`rooms-${id}`).style.display = "block"
+    displayApt(id)
     clickTab(1)
-    // Apartment View goes here!
     document.getElementById('splash').style.display = "none"
     document.getElementById('content').style.display = "block"
 }
 const clickRoom = id => {
-    clickTab(1)
     // Room View goes here!
+    clickTab(1)
 }
 const clickTab = n => {
     document.querySelectorAll('[id^="tab-"]').forEach(tab => tab.className = "content-tab")
@@ -114,3 +106,62 @@ const makeRoomsCard = apt => {
         document.getElementById(`floor-${room.floor}-apt-${apt.id}`).appendChild(roomDiv)
     })
 }
+    
+
+
+const displayApt = id => {
+    getApartment(id).then(apt => {
+        let div = document.createElement('div'),
+        img = document.createElement('img'),
+        h3 = document.createElement('h3'),
+        p = document.createElement('p')
+
+        div.className = "apt-info"
+        div.dataset.aptId = apt.id
+        img.className = "apt-img"
+        img.src = apt.image_url
+        h3.innerText = apt.name
+        p.innerText = apt.address
+        div.appendChild(img)
+        div.appendChild(h3)
+        div.appendChild(p)
+
+        document.getElementById("pane-1").replaceWith(div)
+        div.id = "pane-1"
+
+        apt.rooms.forEach(room => {
+            room.comments.forEach(comment => {
+                let row = document.createElement("tr");
+                let cell1 = document.createElement("td");
+                let cell2 = document.createElement("td");
+                let cell3 = document.createElement("td");
+                cell1.innerText = room.unit;
+                cell2.innerText = comment.date;
+                cell3.innerText = comment.content;
+            
+                row.appendChild(cell1)
+                row.appendChild(cell2)
+                row.appendChild(cell3)
+                document.getElementById("comments-table").appendChild(row)
+            })
+            room.issues.forEach(issue => {
+                let row = document.createElement("tr");
+                let cell1 = document.createElement("td");
+                let cell2 = document.createElement("td");
+                let cell3 = document.createElement("td");
+                let cell4 = document.createElement("td");
+                cell1.innerText = room.unit;
+                cell2.innerText = issue.date;
+                cell3.innerText = issue.status;
+                cell4.innerText = issue.description;
+            
+                row.appendChild(cell1)
+                row.appendChild(cell2)
+                row.appendChild(cell3)
+                row.appendChild(cell4)
+                document.getElementById("issues-table").appendChild(row)
+            })
+        })
+    })
+}
+
