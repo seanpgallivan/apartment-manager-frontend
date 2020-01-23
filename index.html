@@ -9,10 +9,7 @@
     <body>
         <div class="header">Apartment Manager</div>
         <div class="sidebar">
-            <div id="card-wrapper">
-                <!-- Apartment Cards go here -->
-            </div>
-            <!-- <div id="new-apt">Create a New<br>Apartment Listing</div> -->
+            <div id="card-wrapper"></div>
         </div>
         <div id="splash">
             <!-- Splash Screen html goes here -->
@@ -23,14 +20,25 @@
             <div id="tab-3" class="content-tab">Issues</div>
             <div class="content-spacer"></div>
             <div class="content-pane">
-                <div id="pane-1" class="pane">
-                    Pane 1 (info) goes here!
-                </div>
+                <div id="pane-1" class="pane">Pane 1</div>
                 <div id="pane-2" class="pane">
-                    Pane 2 (comments) go here!
+                    <table id="comments-table">
+                        <tr>
+                            <th>Unit</th>
+                            <th>Date</th>
+                            <th>Comment</th>
+                          </tr>
+                    </table>
                 </div>
                 <div id="pane-3" class="pane">
-                    Pane 3 (issues) go here!
+                    <table id="issues-table">
+                        <tr>
+                            <th>Unit</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Issue</th>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
