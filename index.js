@@ -62,6 +62,7 @@ const clickShowApts = id => {
     document.getElementById('splash').style.display = "block"
 }
 const clickAptCard = id => {
+    clearTables()
     document.querySelector('.sidebar').scrollTop = 0
     document.querySelectorAll('[id^="apt-"]').forEach(card => card.style.display = "none")
     document.getElementById(`apt-${id}`).style.display = "block"
@@ -74,6 +75,7 @@ const clickAptCard = id => {
     document.getElementById('content').style.display = "block"
 }
 const clickRoom = (id, div) => {
+    clearTables()
     if (document.querySelector('.room-active')) document.querySelector('.room-active').className = "room"
     div.className = "room-active"
     displayRoom(id)
@@ -85,11 +87,10 @@ const clickTab = n => {
     document.querySelectorAll('[id^="pane-"]').forEach(pane => pane.style.display = "none")
     document.getElementById(`pane-${n}`).style.display = "block"
 }
-// // // // // // // // // // // // //
-const clickEditRoom = () => {
-    document.getElementById('modal-room').style.display = "block"
-    document.getElementById('modal-window').style.display = "block"
-}
+// const clickEditRoom = () => {
+//     document.getElementById('modal-room').style.display = "block"
+//     document.getElementById('modal-window').style.display = "block"
+// }
 const clickIssue = (room, issue=null) => {
     let form = document.getElementById('form-issue')
     if (issue) {
@@ -110,6 +111,7 @@ const clickIssue = (room, issue=null) => {
 const clickConfirmIssue = issue => {
     issue.id ? patchIssue(issue).then(displayIssue) : postIssue(issue).then(displayIssue)
     closeModal()
+    clickTab(3)
 }
 const clickComment = (room, comment=null) => {
     let form = document.getElementById('form-comment')
@@ -133,6 +135,7 @@ const clickComment = (room, comment=null) => {
 const clickConfirmComment = comment => {
     comment.id ? patchComment(comment).then(displayComment) : postComment(comment).then(displayComment)
     closeModal()
+    clickTab(2)
 }
 const clickCommentDelete = id => {
     deleteComment(id).then(() => {
@@ -211,19 +214,32 @@ const displayApt = id => getApartment(id).then(apt => {
 const displayRoom = id => getRoom(id).then(room => {
     let div = document.createElement("div"),
         h1 = document.createElement("h1"),
-        p1 = document.createElement("p"),
-        p3 = document.createElement("p"),
-        p4 = document.createElement("p")
+        h2a = document.createElement("h2"),
+        h2b = document.createElement("h2"),
+        h2c = document.createElement("h2"),
+        box = document.createElement('div'),
+        btn1 = document.createElement('div'),
+        btn2 = document.createElement('div')
     div.className = "room-info"
     div.dataset.roomId = room.id
     h1.textContent = `Unit ${room.unit}`
-    p1.textContent = `Floor: ${room.floor}`
-    p3.textContent = `Tenant: ${room.tenant}`
-    p4.textContent = `Rent: $${room.rent}`
+    h2a.textContent = `Floor: ${room.floor}`
+    h2b.textContent = `Tenant: ${room.tenant}`
+    h2c.textContent = `Rent: $${room.rent}`
+    box.className = 'button-box'
+    btn1.innerText = "New Comment"
+    btn1.className = "modal-button"
+    btn1.onclick = () => clickComment(room)
+    btn2.innerText = "New Issue"
+    btn2.className = "modal-button"
+    btn2.onclick = () => clickIssue(room)
+    box.appendChild(btn1)
+    box.appendChild(btn2)
     div.appendChild(h1)
-    div.appendChild(p1)
-    div.appendChild(p3)
-    div.appendChild(p4)
+    div.appendChild(h2a)
+    div.appendChild(h2b)
+    div.appendChild(h2c)
+    div.appendChild(box)
     document.getElementById("pane-1").replaceWith(div) 
     div.id = "pane-1"
     clearTables()
@@ -276,6 +292,8 @@ const displayIssue = issue => {
     })
 }
 const clearTables = () => {
+    // let paneEls = document.getElementById('pane-1').children
+    // while(paneEls[0]) paneEls[0].remove()
     let commentsRows = document.getElementById("comments-table").children
     while(commentsRows[1]) commentsRows[1].remove()
     let issuesRows = document.getElementById("issues-table").children

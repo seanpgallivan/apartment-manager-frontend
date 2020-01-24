@@ -1,5 +1,5 @@
 body {
-    background: #A7E3F5;
+    background: #B4E8F6;
     margin: 0px;
     text-align: center;
 }
@@ -7,8 +7,12 @@ p {
     margin: 0px;
 }
 h1 {
-    margin: 50px;
-    margin-top: 100px;
+    font-size: 60px;
+    line-height: 90px;    
+}
+h2 {
+    font-size: 40px;
+    line-height: 60px;
 }
 h3 {
     margin: 3px;
@@ -26,7 +30,6 @@ h3 {
 
  /* Sidebar */
 .sidebar {
-    background: #A7E3F5;
     width: 260px;
     height: calc(100vh - 60px);
     left: 0px;
@@ -83,7 +86,7 @@ h3 {
     background: #d8afe7;
     color: #7A3F75;
 }
-.apt-card, .content-pane, .rooms-card, .room, .room-active, button {
+.apt-card, .content-pane, .rooms-card, .room, .room-active, .cancel, .modal-button {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 .apt-card:active {
@@ -94,7 +97,7 @@ h3 {
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
     padding: 10px 0px 0px 10px;
 }
-button:active {
+.modal-button:active, .cancel:active {
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
     padding: 10px 2px 0px 12px;
 }
@@ -109,7 +112,6 @@ button:active {
     display: none;
 }
 #splash {
-    background: #A7E3F5;
     display: block;
 }
 .content-tab, .content-tab-active {
@@ -152,6 +154,11 @@ button:active {
     height: 100%;
     line-height: 40px;
     overflow-y: auto;
+}
+.button-box {
+    margin: auto;
+    width: max-content;
+    display: inline-flex;
 }
 
 
@@ -205,6 +212,7 @@ button:active {
 .modal-footer {
     line-height: 0px;
     padding: 10px 20px;
+    display: inline-flex;
 }
 form {
     text-align: left;
@@ -236,24 +244,27 @@ textarea {
     height: 90px;
     resize: none;
 }
-button {
-    background: #ffaa1d;
-    color: white;
+.modal-button, .cancel {
+    background: #7A3F75;
+    color: lavender;
     margin: 5px;
     padding: 5px 7px;
-    width: 100px;
-    height: 35px;
-    border: #ffaa1d solid 1px;
+    width: 140px;
+    height: 25px;
+    border: #7A3F75 solid 1px;
     border-radius: 5px;
     font-size: 20px;
+    line-height: 25px;
+    display: inline-block;
+    cursor: pointer;
 }
-button #modal-comment-delete {
+#modal-comment-delete {
     display: none;
 }
-button:hover {
-    background: white;
-    color: #ffaa1d;
-    border: #ffaa1d solid 1px;
+.modal-button:hover, .cancel:hover {
+    background: lavender;
+    color: #7A3F75;
+    border: #7A3F75 solid 1px;
 }
 .apt-img{
     width: 70%;  
@@ -266,7 +277,7 @@ table{
     border: 1px solid black
 }
 .spash-img{
-    width: 60%;
+    width: 80%;
     padding: 25px;
     opacity: 0.8;
 }
