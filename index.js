@@ -43,22 +43,27 @@ const clickRoom = id => {
     getRoom(id).then(room => {
         // console.log(room)
         let div = document.createElement("div")
-        let h1 = document.createElement("h1")
         let p = document.createElement("p")
         let p1 = document.createElement("p")
+        let p2 = document.createElement("p")
         let p3 = document.createElement("p")
+        let p4 = document.createElement("p")
 
         div.className = "room-info"
         div.dataset.roomId = room.id
-        h1.textContent = room.unit
-        p.textContent = `Floor: ${room.floor}`
-        p1.textContent = room.tenant
-        p3.textContent = `$ ${room.rent}`
+        p.className = "unit-number"
+        p.textContent = `${room.unit}`
+        p1.textContent = `Floor: ${room.floor}`
+        p2.textContent = "Unit:"
+        p3.textContent = `Tenant: ${room.tenant}`
+        p4.textContent = `Rent: $${room.rent}`
 
-        div.appendChild(h1)
-        div.appendChild(p)
+
         div.appendChild(p1)
+        div.appendChild(p2)
+        div.appendChild(p)
         div.appendChild(p3)
+        div.appendChild(p4)
 
         document.getElementById("pane-1").replaceWith(div) 
         div.id = "pane-1"
@@ -70,12 +75,15 @@ const clickRoom = id => {
         }
         room.comments.forEach(comment => {
             let row = document.createElement("tr");
+            let cell3 = document.createElement("td");
             let cell1 = document.createElement("td");
             let cell2 = document.createElement("td");
             
+            cell3.innerText = room.unit;
             cell1.innerText = comment.date;
             cell2.innerText = comment.content;
         
+            row.appendChild(cell3);
             row.appendChild(cell1);
             row.appendChild(cell2);
             commentsTbl.appendChild(row)
@@ -87,14 +95,17 @@ const clickRoom = id => {
         }
         room.issues.forEach(issue => {
             let row = document.createElement("tr");
+            let cell4 = document.createElement("td");
             let cell1 = document.createElement("td");
             let cell2 = document.createElement("td");
             let cell3 = document.createElement("td");
 
+            cell4.innerText = room.unit;
             cell1.innerText = issue.date;
             cell2.innerText = issue.status;
             cell3.innerText = issue.description;
 
+            row.appendChild(cell4);
             row.appendChild(cell1);
             row.appendChild(cell2);
             row.appendChild(cell3);
@@ -111,6 +122,7 @@ const clickTab = n => {
     document.querySelectorAll('[id^="pane-"]').forEach(pane => pane.style.display = "none")
     document.getElementById(`pane-${n}`).style.display = "block"
 }
+// // // // // // // // // // // // //
 const clickEditRoom = () => {
     document.getElementById('edit-room').style.display = "block"
     document.getElementById('modal-window').style.display = "block"
@@ -193,6 +205,15 @@ const displayApt = id => {
         document.getElementById("pane-1").replaceWith(div)
         div.id = "pane-1"
 
+
+        let commentsTbl = document.getElementById("comments-table")
+        while(commentsTbl.children.length > 1) {
+            commentsTbl.children[1].remove()
+        }
+        let issuesTbl = document.getElementById("issues-table");
+        while(issuesTbl.children.length > 1){
+            issuesTbl.children[1].remove()
+        }
         apt.rooms.forEach(room => {
             room.comments.forEach(comment => {
                 let row = document.createElement("tr");
@@ -208,6 +229,7 @@ const displayApt = id => {
                 row.appendChild(cell3)
                 document.getElementById("comments-table").appendChild(row)
             })
+
             room.issues.forEach(issue => {
                 let row = document.createElement("tr");
                 let cell1 = document.createElement("td");
