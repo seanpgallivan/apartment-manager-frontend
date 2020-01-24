@@ -6,9 +6,15 @@ body {
 p {
     margin: 0px;
 }
+h1 {
+    margin: 50px;
+    margin-top: 100px;
+}
 h3 {
     margin: 3px;
 }
+
+
 .header {
     background: #7C3A78;
     height: 60px;
@@ -28,12 +34,11 @@ h3 {
     position: fixed;
     overflow-y: auto;
 }
-.apt-card, /* #new-apt, */.room {
+.apt-card, .room, .room-active {
     background: #7A3F75;
     color: lavender;
     margin: 15px;
     border: 1px solid #7A3F75;
-    border-radius: 10px;
     position: relative;
     z-index: 1;
     cursor: pointer;
@@ -42,20 +47,14 @@ h3 {
     width: 208px;
     min-height: 150px;
     padding: 10px;
+    border-radius: 10px;
 }
-/* #new-apt {
-    width: 220px;
-    font-size: 20px;
-    line-height: 30px;
-    padding: 5px;
-} */
 .card-img {
     max-width: 170px;
     border: 1px solid black;
 }
 .rooms-card {
-    /* background: #6185FF; */
-    background: lavender;
+    background: #bb74d6;
     color: 	#7A3F75;
     margin: 10px 25px 10px 50px;
     border-radius: 10px;
@@ -70,27 +69,35 @@ h3 {
     text-align: left;
     font-weight: bold;
 }
-.room {
+.room, .room-active {
     margin: 7px 0px 7px 30px;
     padding: 5px;
     text-align: center;
+    border-radius: 5px;
 }
-.apt-card:hover, /* #new-apt:hover, */ .room:hover {
-    background: #D9F3FA;
-    color: #7258F7;
+.apt-card:hover, .room:hover {
+    background: lavender;
+    color: #7A3F75;
 }
-.apt-card, /* #new-apt, */ .content-pane, .rooms-card, .room {
+.room-active {
+    background: #d8afe7;
+    color: #7A3F75;
+}
+.apt-card, .content-pane, .rooms-card, .room, .room-active, button {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 .apt-card:active {
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
     padding: 15px 5px 5px 15px;
 }
-/* #new-apt:active, */ .room:active {
+.room:active, .room-active {
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
     padding: 10px 0px 0px 10px;
 }
-
+button:active {
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
+    padding: 10px 2px 0px 12px;
+}
 
  /* Content Pane */
 #content, #splash {
@@ -161,7 +168,7 @@ h3 {
     display: none;
 }
 .modal {
-    background: #fff2e0;
+    background: #d8afe7;
     margin: 10% auto;
     width: max-content;
     border: 1px solid;
@@ -171,7 +178,8 @@ h3 {
     display: none;
 }
 .modal-header {
-    background: #ffc053;
+    background: #875282;
+    color: lavender;
     height: 60px;
     padding: 0px 20px;
     font-size: 40px;
@@ -180,11 +188,19 @@ h3 {
 .modal-body {
     margin: 10px auto;
     width: max-content;
-    max-width: 500px;
+    max-width: 600px;
     padding: 0px 20px;
     font-size: 20px;
     line-height: 30px;
     text-align: center;
+}
+.modal-input-box-1 {
+    width: 140px;
+    display: inline-block;
+}
+.modal-input-box-2 {
+    width: 275px;
+    display: inline-block;
 }
 .modal-footer {
     line-height: 0px;
@@ -193,55 +209,93 @@ h3 {
 form {
     text-align: left;
 }
-input {
+input, textarea {
+    background: lavender;
     margin-bottom: 5px;
-    width: 300px;
     font-size: 20px;
     padding: 5px;
     border-radius: 5px;
     display: block;
 }
+.hidden {
+    display: none;
+}
+.input-long {
+    width: 265px;
+}
+.disabled-input-long {
+    background: lightgrey;
+    width: 265px;
+}
+.disabled-input {
+    background: lightgrey;
+    width: 120px;
+}
+textarea {
+    width: 555px;
+    height: 90px;
+    resize: none;
+}
 button {
     background: #ffaa1d;
     color: white;
     margin: 5px;
+    padding: 5px 7px;
     width: 100px;
     height: 35px;
     border: #ffaa1d solid 1px;
     border-radius: 5px;
     font-size: 20px;
 }
+button #modal-comment-delete {
+    display: none;
+}
 button:hover {
     background: white;
     color: #ffaa1d;
     border: #ffaa1d solid 1px;
 }
-
 .apt-img{
     width: 70%;  
     /* border: 1px solid black; */
 }
-
 table{
-    width: 80%;
+    width: 90%;
     margin: auto;
     text-align: left;
     border: 1px solid black
 }
-
 .spash-img{
     width: 60%;
     padding: 25px;
     opacity: 0.8;
 }
-
-.room-info{
-    text-align: left;
-    margin: 50px;
-    margin-top: 100px;
-}
-
 .unit-number{
   font-size: 100px;
   padding: 1px; 
+}
+tr {
+    cursor: pointer;
+    line-height: 16px;
+}
+tr:nth-child(odd) {
+    background: #c4adc4;
+}
+tr:nth-child(even) {
+    background: #b09cb0;
+}
+tr:hover {
+    background: #583458;
+    color: white;
+}
+tr:first-child {
+    background: #c4adc4;
+    color: black;
+}
+td, th {
+    padding: 10px;
+}
+.td-small {
+    width: 80px;
+    text-align: center;
 }

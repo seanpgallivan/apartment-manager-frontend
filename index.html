@@ -12,7 +12,6 @@
             <div id="card-wrapper"></div>
         </div>
         <div id="splash">
-            <!-- Splash Screen html goes here -->
             <img class="spash-img" src="https://miro.medium.com/max/855/1*9VJEOCX6kfeJFvrmBUYDkQ.png">
         </div>
         <div id="content">
@@ -25,18 +24,18 @@
                 <div id="pane-2" class="pane">
                     <table id="comments-table">
                         <tr>
-                            <th>Unit</th>
-                            <th>Date</th>
+                            <th class="td-small">Unit</th>
+                            <th class="td-small">Date</th>
                             <th>Comment</th>
-                          </tr>
+                        </tr>
                     </table>
                 </div>
                 <div id="pane-3" class="pane">
                     <table id="issues-table">
                         <tr>
-                            <th>Unit</th>
-                            <th>Date</th>
-                            <th>Status</th>
+                            <th class="td-small">Unit</th>
+                            <th class="td-small">Date</th>
+                            <th class="td-small">Status</th>
                             <th>Issue</th>
                         </tr>
                     </table>
@@ -45,24 +44,78 @@
             </div>
         </div>
         <div id="modal-window">
-            <div id="edit-room" class="modal">
+            <div id="modal-room" class="modal">
                 <div class="modal-header">Edit Room Info:</div>
                 <div class="modal-body">
-                    <form id="edit-room-form">
+                    <form id="room-form">
                         <label>Username:</label>
                         <input type="text">
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="edit-room-confirm">Confirm</button>
-                    <button id="edit-room-cancel">Cancel</button>
+                    <button id="modal-room-confirm">Confirm</button>
+                    <button class="cancel">Cancel</button>
                 </div>
             </div>
-            <div id="edit-issue" class="modal">
+            <div id="modal-comment" class="modal">
                 <div class="modal-header"></div>
-                <div class="modal-body"></div>
-                <div class="modal-footer"></div>
-            </div>    
+                <div class="modal-body">
+                    <form id="form-comment">
+                        <div class="modal-input-box-1">
+                            <label>Room:</label>
+                            <input name="room" class="disabled-input" type="text" disabled>
+                        </div>
+                        <div class="modal-input-box-1">
+                            <label>Date:</label>
+                            <input name="date" class="disabled-input" type="text" disabled>
+                        </div>
+                        <div class="modal-input-box-2">
+                            <label>Tenant:</label>
+                            <input name="tenant" class="disabled-input-long" type="text" disabled>
+                        </div>
+                        <div>
+                            <label>Comment:</label>
+                            <textarea name="content"></textarea>
+                        </div>
+                        <input name="commentId" class="hidden">
+                        <input name="roomId" class="hidden">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal-comment-confirm">Confirm</button>
+                    <button id="modal-comment-delete">Delete</button>
+                    <button class="cancel">Cancel</button>
+                </div>
+            </div>
+            <div id="modal-issue" class="modal">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <form id="form-issue">
+                        <div class="modal-input-box-1">
+                            <label>Room:</label>
+                            <input name="room" class="disabled-input" type="text" disabled>
+                        </div>
+                        <div class="modal-input-box-1">
+                            <label>Date:</label>
+                            <input name="date" class="disabled-input" type="text" disabled>
+                        </div>
+                        <div class="modal-input-box-2">
+                            <label>Status:</label>
+                            <input name="status" class="input-long" type="text">
+                        </div>
+                        <div>
+                            <label>Description:</label>
+                            <textarea name="description"></textarea>
+                        </div>
+                        <input name="issueId" class="hidden">
+                        <input name="roomId" class="hidden">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal-issue-confirm">Confirm</button>
+                    <button class="cancel">Cancel</button>
+                </div>
+            </div>
         </div>
     </body>
 </html>
