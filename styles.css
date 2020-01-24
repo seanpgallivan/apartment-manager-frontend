@@ -27,7 +27,7 @@ h3 {
     position: fixed;
     overflow-y: auto;
 }
-.apt-card, /* #new-apt, */.room {
+.apt-card, .room, .room-active {
     background: green;
     color: white;
     margin: 15px;
@@ -42,12 +42,6 @@ h3 {
     min-height: 150px;
     padding: 10px;
 }
-/* #new-apt {
-    width: 220px;
-    font-size: 20px;
-    line-height: 30px;
-    padding: 5px;
-} */
 .card-img {
     max-width: 170px;
     border: 1px solid black;
@@ -68,23 +62,27 @@ h3 {
     text-align: left;
     font-weight: bold;
 }
-.room {
+.room, .room-active {
     margin: 7px 0px 7px 30px;
     padding: 5px;
     text-align: center;
 }
-.apt-card:hover, /* #new-apt:hover, */ .room:hover {
+.room-active {
+    background: lime;
+    color: green;
+}
+.apt-card:hover, .room:hover {
     background: white;
     color: green;
 }
-.apt-card, /* #new-apt, */ .content-pane, .rooms-card, .room {
+.apt-card, .content-pane, .rooms-card, .room, .room-active {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 .apt-card:active {
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
     padding: 15px 5px 5px 15px;
 }
-/* #new-apt:active, */ .room:active {
+.room:active, .room-active {
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.4);
     padding: 10px 0px 0px 10px;
 }
@@ -178,11 +176,19 @@ h3 {
 .modal-body {
     margin: 10px auto;
     width: max-content;
-    max-width: 500px;
+    max-width: 600px;
     padding: 0px 20px;
     font-size: 20px;
     line-height: 30px;
     text-align: center;
+}
+.modal-input-box-1 {
+    width: 140px;
+    display: inline-block;
+}
+.modal-input-box-2 {
+    width: 275px;
+    display: inline-block;
 }
 .modal-footer {
     line-height: 0px;
@@ -191,13 +197,31 @@ h3 {
 form {
     text-align: left;
 }
-input {
+input, textarea {
     margin-bottom: 5px;
-    width: 300px;
     font-size: 20px;
     padding: 5px;
     border-radius: 5px;
     display: block;
+}
+.hidden {
+    display: none;
+}
+.input-long {
+    width: 265px;
+}
+.disabled-input-long {
+    background: lightgrey;
+    width: 265px;
+}
+.disabled-input {
+    background: lightgrey;
+    width: 120px;
+}
+textarea {
+    width: 555px;
+    height: 90px;
+    resize: none;
 }
 button {
     background: #ffaa1d;
@@ -209,19 +233,20 @@ button {
     border-radius: 5px;
     font-size: 20px;
 }
+button #modal-comment-delete {
+    display: none;
+}
 button:hover {
     background: white;
     color: #ffaa1d;
     border: #ffaa1d solid 1px;
 }
-
 .apt-img{
     width: 70%;  
     border: 1px solid black;
 }
-
 table{
-    width: 80%;
+    width: 90%;
     margin: auto;
     text-align: left;
     border: 1px solid black
@@ -229,6 +254,31 @@ table{
 
 .spash-img{
     width: 85%;
-    padding: 85px;
+    margin: 50px auto;
     opacity: 0.7;
+}
+tr {
+    cursor: pointer;
+    line-height: 16px;
+}
+tr:nth-child(odd) {
+    background: #c4adc4;
+}
+tr:nth-child(even) {
+    background: #b09cb0;
+}
+tr:hover {
+    background: #583458;
+    color: white;
+}
+tr:first-child {
+    background: #c4adc4;
+    color: black;
+}
+td, th {
+    padding: 10px;
+}
+.td-small {
+    width: 80px;
+    text-align: center;
 }
