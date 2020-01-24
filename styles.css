@@ -1,5 +1,5 @@
 body {
-    background: thistle;
+    background: #A7E3F5;
     margin: 0px;
     text-align: center;
 }
@@ -10,16 +10,17 @@ h3 {
     margin: 3px;
 }
 .header {
-    background: steelblue;
+    background: #7C3A78;
     height: 60px;
     font-size: 40px;
     line-height: 60px;
+    color: lavender;
 }
 
 
  /* Sidebar */
 .sidebar {
-    background: lightgreen;
+    background: #A7E3F5;
     width: 260px;
     height: calc(100vh - 60px);
     left: 0px;
@@ -28,10 +29,10 @@ h3 {
     overflow-y: auto;
 }
 .apt-card, /* #new-apt, */.room {
-    background: green;
-    color: white;
+    background: #7A3F75;
+    color: lavender;
     margin: 15px;
-    border: 1px solid green;
+    border: 1px solid #7A3F75;
     border-radius: 10px;
     position: relative;
     z-index: 1;
@@ -53,8 +54,9 @@ h3 {
     border: 1px solid black;
 }
 .rooms-card {
-    background: limegreen;
-    color: white;
+    /* background: #6185FF; */
+    background: lavender;
+    color: 	#7A3F75;
     margin: 10px 25px 10px 50px;
     border-radius: 10px;
     padding: 10px 20px 10px 20px;
@@ -74,8 +76,8 @@ h3 {
     text-align: center;
 }
 .apt-card:hover, /* #new-apt:hover, */ .room:hover {
-    background: white;
-    color: green;
+    background: #D9F3FA;
+    color: #7258F7;
 }
 .apt-card, /* #new-apt, */ .content-pane, .rooms-card, .room {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
@@ -100,18 +102,18 @@ h3 {
     display: none;
 }
 #splash {
-    background: thistle;
+    background: #A7E3F5;
     display: block;
 }
 .content-tab, .content-tab-active {
-    background: #ff99ff;
-    color: fuchsia;
+    background: #CA90E4;
+    color: #873877;
     margin-right: -5px;
     width: 120px;
     height: 30px;
     font-size: 20px;
     line-height: 30px;
-    border: 5px solid fuchsia;
+    border: 5px solid #873877;
     border-radius: 20px 20px 0px 0px;
     float: left;
     cursor: pointer;
@@ -120,12 +122,12 @@ h3 {
 }
 .content-tab-active {
     background: lavender;
-    color: fuchsia;
+    color: #873877;
     height: 35px;
     border-bottom: 0px;
 }
 .content-tab:hover {
-    background: fuchsia;
+    background: #873877;
     color: white;
 }
 .content-spacer {
@@ -135,7 +137,7 @@ h3 {
 .content-pane {
     background: lavender;
     height: calc(100% - 65px);
-    border: 5px solid fuchsia;
+    border: 5px solid #7A3F75;
     border-radius: 20px;
     padding: 10px;
 }
@@ -217,7 +219,7 @@ button:hover {
 
 .apt-img{
     width: 70%;  
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 table{
@@ -228,7 +230,18 @@ table{
 }
 
 .spash-img{
-    width: 85%;
-    padding: 85px;
-    opacity: 0.7;
+    width: 60%;
+    padding: 25px;
+    opacity: 0.8;
+}
+
+.room-info{
+    text-align: left;
+    margin: 50px;
+    margin-top: 100px;
+}
+
+.unit-number{
+  font-size: 100px;
+  padding: 1px; 
 }
